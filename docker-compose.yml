@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    #image: my-node-app
+    build: 
+      context: . # directory localisation project
+      dockerfile: Dockerfile.dev # docker File specification
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules  # Use the node_modules from the container, not from the host
+      - .:/app           # Mount the current directory on the host to /app in the container
+  tests:
+    #image: my-node-app
+    build: 
+      context: . # directory localisation project
+      dockerfile: Dockerfile.dev # docker File specification
+    volumes:
+      - /app/node_modules  # Use the node_modules from the container, not from the host
+      - .:/app           # Mount the current directory on the host to /app in the container
+    command: ["npm", "run", "test"]
