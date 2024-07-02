@@ -1,5 +1,5 @@
 # First stage: install dependencies
-FROM node:18 as build
+FROM node:20.14 as build
 
 # Set the working directory
 WORKDIR /app
@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Second stage: create a smaller final image
-FROM node:18-alpine
+FROM node:20.14-alpine3.20
 
 # Set the working directory
 WORKDIR /app
