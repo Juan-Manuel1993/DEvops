@@ -3,8 +3,18 @@ services:
   - docker
 
 before_install:
+  # Print Docker version for debugging
+  - docker --version
+  # Print Node.js version for debugging
+  - node --version
+    # Build Docker image
   - docker build -t jezoro/docker-react -f Dockerfile.dev .
+    # List Docker containers for debugging
+  - docker ps -a
   
 script:
+  # Run the tests in the Docker container
   - docker run -e CI=true jezoro/docker-react npm  run test  
+    # If the test fails, print logs for debugging
+  - if [ $? -ne 0 ]; then docker logs $(docker ps -aq | head -n 1); fi
 
