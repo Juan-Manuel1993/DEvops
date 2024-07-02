@@ -8,7 +8,7 @@ before_install:
   # Print Node.js version for debugging
   - node --version
     # Build Docker image
-  - docker build --memory=4g --cpus=2 -t jezoro/docker-react -f Dockerfile.dev .
+  - docker build --memory=4g -t jezoro/docker-react -f Dockerfile.dev .
     # List Docker containers for debugging
   - docker ps -a
   
