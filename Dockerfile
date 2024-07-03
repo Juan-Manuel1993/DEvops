@@ -1,5 +1,5 @@
 # First stage: install dependencies
-FROM node:20.14 as build
+FROM node:20.14.0-bullseye-slim as build
 
 # Set the working directory
 WORKDIR /app
