@@ -26,5 +26,9 @@ COPY --from=build /app .
 RUN npm run build 
 
 FROM nginx
-EXPOSE 80
+
+# Copy your NGINX configuration file to the container
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build2 /app/build /usr/share/nginx/html
+
+EXPOSE 80
